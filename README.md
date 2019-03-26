@@ -18,3 +18,9 @@ vagrant up --provision
 
 Inside each folder there should be instructions or exploit code on how to experiment with each issue.
 
+
+
+
+
+
+**This content was created by Kindred Group Security. Please share if you enjoyed!**
