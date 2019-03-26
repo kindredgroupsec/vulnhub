@@ -18,7 +18,7 @@
 #                                                                                                           #
 # DESCRIPTION                                                                                               #
 # Gives you a remote shell on gocd agent by abuse the gocd api.                                             #
-# Note this also privesc to root by abuse docker if it is present.                                          #
+#                                                                                                           #
 #                                                                                                           #
 # mikael.kall@kindredgroup.com                                                                              #
 #                                                                                                           #

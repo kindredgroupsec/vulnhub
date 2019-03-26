@@ -135,7 +135,7 @@ Run ./lfi_poison.py to get the usage menu.
 ░ ░ ▒  ░ ░      ▒ ░░▒ ░       ░ ▒ ▒░  ▒ ░░ ░▒  ░ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░
   ░ ░    ░ ░    ▒ ░░░       ░ ░ ░ ▒   ▒ ░░  ░  ░  ░ ░ ░ ▒     ░   ░ ░
     ░  ░        ░               ░ ░   ░        ░      ░ ░           ░
-[nighter@nighter.se]
+[mikael.kall@kindredgroup.com]
 
 Usage: ./lfi_poison.py <URL> <LHOST> <LPORT>
 

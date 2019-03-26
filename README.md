@@ -1,7 +1,7 @@
 # Vulnhub
 
-This projected is intended to be a directory structure full of missconfigured or vulnerable applications running in Docker or Vagrant and examples
-on how to exploit them. Intention is that you should find your favorite application and all the ways it can be exploitet is documented and with examples.
+This project is intended to be a directory structure full of missconfigured or vulnerable applications running in Docker or Vagrant and examples
+on how to exploit them. Intention is that you should find application and all the ways it can be exploitet documented with examples.
 
 ## Usage
 
