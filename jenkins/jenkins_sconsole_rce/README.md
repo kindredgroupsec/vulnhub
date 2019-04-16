@@ -12,66 +12,24 @@ This works because Jenkins script console allow execution of groovy code, so thi
 Escape docker and get root works because docker.sock is mapped into the container and access to docker.sock is equalent to root access
 this is also not a vuln just common sence you not do this from security perspective if you are concern about docker escape and privilege escalation to root.
 
-
 ## Usage
 
-First startup the docker Jenkins container by execute the run.sh script it will run a Jenkins instance where we can demo the exploitation.
+Start docker container with Jenins if you want to test this locally
 
 ```ssh
-docker  ./run.sh
-Sending build context to Docker daemon   5.12kB
-Step 1/10 : FROM jenkins:1.596
- ---> 484633fa05c1
-Step 2/10 : USER root
- ---> Using cache
- ---> 718a42ff0ebd
-Step 3/10 : RUN apt-get update       && apt-get install -y sudo       && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 0ecf3d8f2e8e
-Step 4/10 : RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
- ---> Using cache
- ---> 4ba00f02b3a9
-Step 5/10 : RUN groupadd docker
- ---> Using cache
- ---> 3323041f311b
-Step 6/10 : RUN gpasswd -a jenkins docker
- ---> Using cache
- ---> b9c2516d96a1
-Step 7/10 : ADD givemeroot.sh /
- ---> ec1fcf18e958
-Step 8/10 : USER jenkins
- ---> Running in 6ac13b7148e3
-Removing intermediate container 6ac13b7148e3
- ---> 1c0dc288c304
-Step 9/10 : COPY plugins.txt /usr/share/jenkins/plugins.txt
- ---> 4c9420482d9c
-Step 10/10 : RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
- ---> Running in 86aba74268d3
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   248  100   248    0     0    369      0 --:--:-- --:--:-- --:--:--   370
-100   255  100   255    0     0    232      0  0:00:01  0:00:01 --:--:--   847
-100  210k  100  210k    0     0   115k      0  0:00:01  0:00:01 --:--:-- 57.3M
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   254  100   254    0     0    566      0 --:--:-- --:--:-- --:--:--   566
-100   261  100   261    0     0    345      0 --:--:-- --:--:-- --:--:--   345
-100 2537k  100 2537k    0     0   571k      0  0:00:04  0:00:04 --:--:--  727k
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   240  100   240    0     0    545      0 --:--:-- --:--:-- --:--:--   545
-100   247  100   247    0     0    300      0 --:--:-- --:--:-- --:--:--   942
-100 1985k  100 1985k    0     0   334k      0  0:00:05  0:00:05 --:--:--  418k
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   254  100   254    0     0    579      0 --:--:-- --:--:-- --:--:--   579
-100   260  100   260    0     0    347      0 --:--:-- --:--:-- --:--:--  2500
-100  108k  100  108k    0     0  90333      0  0:00:01  0:00:01 --:--:-- 90333
-Removing intermediate container 86aba74268d3
- ---> 9524555a4829
-Successfully built 9524555a4829
-Successfully tagged jenkins:latest
-57aeb64742b86d986c59135f61bf6582683ee378605160d0c3e72f07474c3866
+⬢  jenkins_preauth_rce  master ⦿ docker-compose up -d
+Creating network "jenkinspreauthrce_default" with the default driver
+Creating jenkinspreauthrce_jenkins_1 ... done
+```
+
+Verify that container is running.
+
+```ssh
+⬢  jenkins_preauth_rce  master ⦿ docker ps
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                              NAMES
+cdd5256e8065        vulhub/jenkins:2.138   "/sbin/tini -- /usr/…"   29 seconds ago      Up 27 seconds       0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkinspreauthrce_jenkins_1
+```
+
 ```
 
 Once the Jenkins container is running we can run the exploitation, here is the usage menu.

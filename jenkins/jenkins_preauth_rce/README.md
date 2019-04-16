@@ -13,9 +13,9 @@ Script Security Plugin up to and including 1.49
 
 **Resources**
 
-https://0xdf.gitlab.io/2019/02/27/playing-with-jenkins-rce-vulnerability.html\
-https://github.com/vulhub/vulhub/tree/master/jenkins/CVE-2018-1000861\
-https://github.com/petercunha/Jenkins-PreAuth-RCE-PoC\
+https://0xdf.gitlab.io/2019/02/27/playing-with-jenkins-rce-vulnerability.html \
+https://github.com/vulhub/vulhub/tree/master/jenkins/CVE-2018-1000861 \
+https://github.com/petercunha/Jenkins-PreAuth-RCE-PoC \
 https://jenkins.io/security/advisory/2019-01-08/#SECURITY-1266
 
 Here is the exploit code for exploit this issue.
